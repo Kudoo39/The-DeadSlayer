@@ -25,16 +25,21 @@ public class LevelManager : MonoBehaviour
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)){
-            if(SceneManager.GetActiveScene().buildIndex == 3)
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 Application.LoadLevel("Start");
+                Debug.Log("Load from end to start");
             }
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 Application.LoadLevel("Start");
+                Debug.Log("Load from help to start");
             }
-            else
-            Application.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                Application.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+                Debug.Log("Load from start to next");
+            }
         }
     }
 }

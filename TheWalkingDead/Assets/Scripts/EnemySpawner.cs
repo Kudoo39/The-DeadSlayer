@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform left, right;
 
+    public SpriteRenderer spriteRenderer;
     private GameObject spawnEnemy;
     private int random;
     private int side;
@@ -23,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (1<2)
         {
-            yield return new WaitForSeconds(Random.RandomRange(1, 5));
+            yield return new WaitForSeconds(Random.Range(1, 3));
             random = Random.Range(0, monster.Length);
             side = Random.Range(0, 2);
             spawnEnemy = Instantiate(monster[random]);
@@ -39,7 +40,8 @@ public class EnemySpawner : MonoBehaviour
                 //on the right
                 spawnEnemy.transform.position = right.position;
                 spawnEnemy.GetComponent<Enemy>().speed = -Random.Range(3, 7);
-                spawnEnemy.transform.localScale = new Vector3(-1f, 1f, 1f);
+                //spawnEnemy.transform.localScale = new Vector3(-1f, 1f, 1f);
+                spawnEnemy.transform.localScale = new Vector3(-1f,1f,1f);
             }
         }
         // Update is called once per frame

@@ -16,11 +16,12 @@ public class Player : MonoBehaviour
 
     public Animator animate;
     private string Walk_Animation = "Walk";
+    private string Hurt_Animation = "Hurt";
+
     private int grounded = 0;
     private string Ground_Tag = "Ground";
     private string Enemy_Tag = "Enemy";
 
-    AudioSource jumpsound;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        jumpsound = GetComponent<AudioSource>();
+ 
     }
 
     // Update is called once per frame
@@ -40,14 +41,14 @@ public class Player : MonoBehaviour
             {
                 grounded += 1;
                 myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-                jumpsound.Play();
+                AudioScript.Instance.jumpSound();
             }
             if  (Input.GetButtonDown("Jump") && grounded < 2)
             {
                 grounded += 1;
                 myBody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-                jumpsound.Play();
-            }
+                AudioScript.Instance.jumpSound();
+        }
     }
     private void FixedUpdate()
     {
@@ -87,8 +88,12 @@ public class Player : MonoBehaviour
             grounded = 0;
         }
 
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>(); 
-        if (collision.gameObject.CompareTag(Enemy_Tag))
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            Application.LoadLevel("End");
+        }
+            if (collision.gameObject.CompareTag(Enemy_Tag))
         {    
             foreach(ContactPoint2D point in collision.contacts)
             {
@@ -108,12 +113,14 @@ public class Player : MonoBehaviour
                     {
                         Score.Instance.AddScore();
                     }
-                    jumpsound.Play();
+                    AudioScript.Instance.killEnemy();
                 }
                 if (point.normal.y < 0.5f)
                 {
+                    animate.SetBool(Hurt_Animation, true);
                     Debug.Log("-1 health");
                     PlayerHealth.Instance.Damage();
+                    AudioScript.Instance.touchEnemy();
                     break;
                     //if (playerHealth == 0)
                     //{

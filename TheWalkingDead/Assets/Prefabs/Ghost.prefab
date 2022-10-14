@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6425114732522039528}
   - component: {fileID: 6425114732522039529}
   - component: {fileID: 6425114732522039531}
-  - component: {fileID: 104619793}
   - component: {fileID: 4424907086327273561}
+  - component: {fileID: 104619793}
   m_Layer: 6
   m_Name: Ghost
   m_TagString: Enemy
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 1394167483
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 263444198, guid: 6699eed989b3655408666fc3848973f0, type: 3}
+  m_Sprite: {fileID: -108773019, guid: bd571905390b47343a2a86e1a6006bd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,6 +129,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &4424907086327273561
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425114732522039532}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.29546994, y: -0.0723753}
+  m_Size: {x: 1.0481881, y: 2.0607}
+  m_Direction: 0
 --- !u!114 &104619793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,19 +159,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   myBody: {fileID: 0}
---- !u!70 &4424907086327273561
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425114732522039532}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09488726}
-  m_Size: {x: 0.93, y: 2.2745638}
-  m_Direction: 0
